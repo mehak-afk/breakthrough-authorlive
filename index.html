@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breakthrough Author Live — 4-Week Bestseller Challenge</title>
+<meta name="description" content="Write and launch your #1 Amazon Bestselling book in 4 weeks. Breakthrough Author Live — the live challenge for coaches and experts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --navy:        #0D1B2A;
+  --navy-mid:    #152336;
+  --navy-light:  #1E3251;
+  --cream:       #F7F2E8;
+  --cream-warm:  #EDE5D0;
+  --cream-deep:  #E4D9C0;
+  --gold:        #C9A84C;
+  --gold-light:  #E2C97E;
+  --gold-pale:   #F0E0A8;
+  --gold-dark:   #9E7B2F;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Jost', sans-serif;
+
+  --bg:          var(--cream);
+  --bg-alt:      var(--cream-warm);
+  --bg-dark:     var(--navy);
+  --text:        var(--navy);
+  --text-muted:  #5A6478;
+  --text-inv:    var(--cream);
+  --surface:     #FFFFFF;
+  --border:      rgba(201,168,76,0.3);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius: 2px;
+}
+
+[data-theme="dark"] {
+  --bg:          var(--navy);
+  --bg-alt:      var(--navy-mid);
+  --bg-dark:     #070F1A;
+  --text:        var(--cream);
+  --text-muted:  rgba(247,242,232,0.6);
+  --surface:     var(--navy-light);
+  --border:      rgba(201,168,76,0.2);
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ═══════════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════════ */
+.display { font-family: var(--font-display); font-weight: 300; font-style: italic; line-height: 1.1; }
+.display-bold { font-family: var(--font-display); font-weight: 600; line-height: 1.15; }
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.gold { color: var(--gold); }
+.gold-light { color: var(--gold-light); }
+
+/* ═══════════════════════════════════════════
+   GRAIN TEXTURE
+═══════════════════════════════════════════ */
+.grain::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════════
+   LAYOUT UTILITIES
+═══════════════════════════════════════════ */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 2rem; }
+.container-narrow { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
+.section { padding: 7rem 0; }
+.section-sm { padding: 4rem 0; }
+.text-center { text-align: center; }
+
+/* ═══════════════════════════════════════════
+   DIVIDER
+═══════════════════════════════════════════ */
+.gold-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+.gold-rule::before, .gold-rule::after {
+  content: '';
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.gold-rule .diamond {
+  width: 6px; height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.6s var(--ease);
+}
+.btn-gold:hover::after { left: 140%; }
+.btn-gold:hover { box-shadow: 0 8px 32px rgba(201,168,76,0.4); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.btn-outline:hover { background: rgba(201,168,76,0.08); }
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 1.5rem 0;
+  transition: background 0.4s var(--ease), backdrop-filter 0.4s, padding 0.3s var(--ease), box-shadow 0.3s;
+}
+.nav.scrolled {
+  background: var(--bg);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--border);
+  padding: 1rem 0;
+}
+[data-theme="dark"] .nav.scrolled { background: rgba(13,27,42,0.95); }
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+.nav-logo span { display: block; font-size: 0.55rem; letter-spacing: 0.3em; color: var(--text-muted); font-family: var(--font-body); font-weight: 400; text-transform: uppercase; }
+
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-link {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--gold); }
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, transform 0.3s var(--ease);
+  color: var(--text);
+}
+.theme-toggle:hover { border-color: var(--gold); transform: rotate(20deg); }
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 0 5rem;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(201,168,76,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 80% 30%, rgba(201,168,76,0.04) 0%, transparent 50%),
+    linear-gradient(180deg, #070F1A 0%, #0D1B2A 50%, #152336 100%);
+}
+
+.hero-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease) 0.1s forwards;
+}
+.hero-eyebrow .eyebrow { color: var(--gold-light); }
+.star { color: var(--gold); font-size: 0.6rem; }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease) 0.25s forwards;
+}
+.hero h1 em { color: var(--gold-light); font-style: italic; }
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(247,242,232,0.65);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  font-weight: 300;
+  line-height: 1.8;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease) 0.4s forwards;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease) 0.55s forwards;
+}
+
+.hero-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 2rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease) 0.7s forwards;
+}
+.proof-item {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: rgba(247,242,232,0.5);
+  text-transform: uppercase;
+}
+.proof-sep { color: var(--gold); opacity: 0.4; }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 1s var(--ease) 1s forwards;
+}
+.scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+  animation: scrollPulse 2s ease infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.1); }
+}
+
+/* ═══════════════════════════════════════════
+   PROBLEM SECTION
+═══════════════════════════════════════════ */
+.problem-section { background: var(--bg); }
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 4rem;
+  border: 1px solid var(--border);
+}
+.problem-card {
+  padding: 3rem 2.5rem;
+  border-right: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.problem-card:last-child { border-right: none; }
+.problem-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 2px; height: 0;
+  background: var(--gold);
+  transition: height 0.5s var(--ease);
+}
+.problem-card:hover::before { height: 100%; }
+
+.problem-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--gold);
+}
+.problem-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+.problem-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+
+/* ═══════════════════════════════════════════
+   PROGRAM TIMELINE
+═══════════════════════════════════════════ */
+.program-section {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .program-section { background: var(--bg-dark); }
+
+.program-section .eyebrow { color: var(--gold); }
+.program-section h2 { color: var(--cream); }
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 5rem;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 2.5rem;
+  left: 12.5%;
+  right: 12.5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dark), var(--gold), var(--gold-dark), transparent);
+}
+
+.week-card {
+  padding: 0 2rem;
+  text-align: center;
+  position: relative;
+}
+.week-num {
+  width: 5rem;
+  height: 5rem;
+  border: 1px solid var(--gold-dark);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  background: var(--navy-mid);
+  position: relative;
+  z-index: 2;
+  transition: border-color 0.3s, background 0.3s;
+}
+[data-theme="dark"] .week-num { background: var(--navy); }
+.week-card:hover .week-num { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+
+.week-label { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-family: var(--font-body); font-weight: 500; }
+.week-n { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--gold-light); line-height: 1; }
+
+.week-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--cream);
+  margin-bottom: 0.75rem;
+}
+.week-card p { font-size: 0.88rem; color: rgba(247,242,232,0.55); line-height: 1.6; }
+
+/* ═══════════════════════════════════════════
+   SOCIAL PROOF / PULL QUOTE
+═══════════════════════════════════════════ */
+.quote-section {
+  background: var(--bg-alt);
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.quote-section::before {
+  content: '\201C';
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: 20rem;
+  color: var(--gold);
+  opacity: 0.05;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.pull-quote {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  color: var(--text);
+  line-height: 1.35;
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 2rem;
+}
+.pull-quote em { color: var(--gold); }
+
+.quote-attr {
+  text-align: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.quote-attr strong { color: var(--gold); font-weight: 400; }
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 5rem;
+}
+.testi-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  position: relative;
+  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.testi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+[data-theme="dark"] .testi-card { background: var(--navy-light); }
+
+.stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+.testi-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.testi-name { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+.testi-role { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+/* ═══════════════════════════════════════════
+   HOST
+═══════════════════════════════════════════ */
+.host-section { background: var(--bg); }
+.host-inner {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.host-photo-wrap {
+  position: relative;
+}
+.host-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+}
+.host-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy-mid) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 300;
+}
+.host-photo-ring {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.2);
+}
+.host-photo-ring2 {
+  position: absolute;
+  inset: -24px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.1);
+}
+
+.host-tag {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid var(--border);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+.host-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+.host-bio { color: var(--text-muted); font-size: 1rem; line-height: 1.9; margin-bottom: 2rem; }
+.host-stats {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.3rem; }
+
+/* ═══════════════════════════════════════════
+   PRICING / CTA
+═══════════════════════════════════════════ */
+.cta-section {
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 0;
+}
+[data-theme="dark"] .cta-section { background: var(--bg-dark); }
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 3rem;
+  border: 1px solid rgba(201,168,76,0.12);
+  pointer-events: none;
+}
+.cta-section::after {
+  content: '';
+  position: absolute;
+  inset: 3.5rem;
+  border: 1px solid rgba(201,168,76,0.05);
+  pointer-events: none;
+}
+
+.cta-inner { position: relative; z-index: 2; text-align: center; }
+.cta-section .eyebrow { color: var(--gold); margin-bottom: 1rem; display: block; }
+
+.price-display {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.25rem;
+  margin: 2rem 0;
+}
+.price-dollar { font-family: var(--font-display); font-size: 2rem; color: var(--gold); margin-top: 1rem; }
+.price-num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(5rem, 12vw, 9rem);
+  color: var(--cream);
+  line-height: 1;
+}
+.price-period { font-size: 1rem; color: rgba(247,242,232,0.5); margin-top: 2rem; font-weight: 300; align-self: flex-end; margin-bottom: 1rem; }
+
+.includes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 480px;
+  margin: 0 auto 3rem;
+  text-align: left;
+}
+.include-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.92rem;
+  color: rgba(247,242,232,0.7);
+}
+.include-check { color: var(--gold); flex-shrink: 0; margin-top: 0.1rem; }
+
+.cta-btn-wrap { margin-bottom: 1.5rem; }
+.cta-trust {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247,242,232,0.35);
+}
+
+/* Countdown */
+.countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2.5rem 0;
+}
+.count-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(247,242,232,0.4); margin-bottom: 2.5rem; display: block; }
+.count-block { text-align: center; min-width: 72px; }
+.count-num {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1;
+  display: block;
+}
+.count-unit { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-top: 0.3rem; display: block; }
+.count-sep { font-family: var(--font-display); font-size: 2rem; color: rgba(201,168,76,0.4); margin-bottom: 0.5rem; }
+
+/* ═══════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════ */
+.faq-section { background: var(--bg-alt); }
+.faq-grid { max-width: 780px; margin: 4rem auto 0; }
+
+details {
+  border-bottom: 1px solid var(--border);
+}
+details:first-child { border-top: 1px solid var(--border); }
+
+summary {
+  padding: 1.5rem 0;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  user-select: none;
+  transition: color 0.2s;
+}
+summary::-webkit-details-marker { display: none; }
+summary:hover { color: var(--gold); }
+
+.faq-icon {
+  width: 24px; height: 24px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: var(--gold);
+  transition: transform 0.3s var(--ease), border-color 0.2s;
+}
+details[open] .faq-icon { transform: rotate(45deg); border-color: var(--gold); }
+
+.faq-body {
+  padding: 0 0 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 680px;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+.footer {
+  background: var(--navy);
+  padding: 4rem 0 2rem;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+[data-theme="dark"] .footer { background: #050C15; }
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.footer-brand .nav-logo { margin-bottom: 0.5rem; }
+.footer-tagline { font-size: 0.82rem; color: rgba(247,242,232,0.35); letter-spacing: 0.05em; margin-top: 0.5rem; }
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer-link {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(247,242,232,0.4);
+  transition: color 0.2s;
+}
+.footer-link:hover { color: var(--gold); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(201,168,76,0.08);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy { font-size: 0.72rem; color: rgba(247,242,232,0.25); letter-spacing: 0.05em; }
+
+/* ═══════════════════════════════════════════
+   TRANSFORMATION SECTION
+═══════════════════════════════════════════ */
+.transform-section { background: var(--bg); }
+.transform-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  margin-top: 4rem;
+  align-items: stretch;
+}
+.transform-col {
+  padding: 3rem;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.transform-col h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.transform-before { background: var(--surface); }
+.transform-before h3 { color: var(--text-muted); }
+.transform-after { background: var(--surface); }
+.transform-after h3 { color: var(--gold); }
+.transform-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 0.6rem 0;
+}
+.transform-list li .t-icon { flex-shrink: 0; margin-top: 0.15rem; }
+.transform-before .t-icon { color: var(--text-muted); opacity: 0.5; }
+.transform-after .t-icon { color: var(--gold); }
+.transform-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg) 100%);
+  position: relative;
+}
+.transform-arrow::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent 10%, var(--gold) 50%, transparent 90%);
+}
+.arrow-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--gold);
+  position: relative;
+  z-index: 2;
+}
+
+/* ═══════════════════════════════════════════
+   WHAT SETS US APART
+═══════════════════════════════════════════ */
+.apart-section {
+  background: var(--bg-alt);
+  position: relative;
+  overflow: hidden;
+}
+.apart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+.apart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  text-align: center;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.apart-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+[data-theme="dark"] .apart-card { background: var(--navy-light); }
+.apart-card:hover .apart-num { color: var(--gold); }
+.apart-num {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 1rem;
+  transition: color 0.3s var(--ease);
+}
+.apart-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+.apart-card p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.apart-gold-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: transform 0.5s var(--ease);
+}
+.apart-card:hover .apart-gold-line { transform: scaleX(1); }
+
+/* ═══════════════════════════════════════════
+   OBJECTION HANDLING
+═══════════════════════════════════════════ */
+.objection-section { background: var(--bg-alt); }
+.objection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+.objection-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  position: relative;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.objection-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+}
+[data-theme="dark"] .objection-card { background: var(--navy-light); }
+.objection-doubt {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.objection-doubt .doubt-q {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.objection-answer {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+.objection-answer strong { color: var(--text); font-weight: 500; }
+.objection-highlight {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .problem-grid { grid-template-columns: 1fr; }
+  .problem-card { border-right: none; border-bottom: 1px solid var(--border); }
+  .problem-card:last-child { border-bottom: none; }
+
+  .timeline { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .timeline::before { display: none; }
+
+  .testimonials { grid-template-columns: 1fr; }
+  .transform-grid { grid-template-columns: 1fr; }
+  .transform-arrow { width: 100%; height: 60px; }
+  .transform-arrow::before { top: 50%; bottom: auto; left: 0; right: 0; width: auto; height: 1px; background: linear-gradient(90deg, transparent 10%, var(--gold) 50%, transparent 90%); }
+  .apart-grid { grid-template-columns: 1fr; }
+  .objection-grid { grid-template-columns: 1fr; }
+
+  .host-inner { grid-template-columns: 1fr; }
+  .host-photo-wrap { max-width: 280px; margin: 0 auto; }
+
+  .hero-cta { flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 600px) {
+  .nav-links { gap: 1rem; }
+  .nav-link { display: none; }
+  .nav-link.mobile-show { display: inline; }
+
+  .timeline { grid-template-columns: 1fr; }
+
+  .host-stats { flex-wrap: wrap; gap: 2rem; }
+
+  .cta-section::before, .cta-section::after { inset: 1rem; }
+
+  .footer-inner { flex-direction: column; gap: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body class="grain">
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      Breakthrough Author Live
+      <span>From Idea to Bestseller in 4 Weeks</span>
+    </a>
+    <div class="nav-links">
+      <a href="#program" class="nav-link">Program</a>
+      <a href="about.html" class="nav-link mobile-show">About</a>
+      <a href="#cta" class="btn btn-outline" style="padding:0.6rem 1.4rem;font-size:0.7rem;">Join — $47</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" aria-labelledby="hero-headline">
+  <div class="hero-bg"></div>
+  <div class="hero-lines" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="star" aria-hidden="true">✦</span>
+        <span class="eyebrow">A 4-Week Live Bestseller Challenge</span>
+        <span class="star" aria-hidden="true">✦</span>
+      </div>
+      <h1 id="hero-headline">
+        Your Book.<br>
+        Your Authority.<br>
+        <em>Your Bestseller.</em>
+      </h1>
+      <p class="hero-sub">
+        Write, launch, and claim your #1 Amazon Bestseller in just 4 weeks — even if you've never written a single word.
+      </p>
+      <div class="hero-cta">
+        <a href="#cta" class="btn btn-gold" style="font-size:0.82rem;padding:1.1rem 3rem;">
+          Claim Your Spot — $47
+        </a>
+        <a href="#program" class="btn btn-outline" style="padding:1.1rem 2.5rem;font-size:0.78rem;">
+          See How It Works
+        </a>
+      </div>
+      <div class="hero-proof">
+        <span class="proof-item">4,200+ Coaches Enrolled</span>
+        <span class="proof-sep" aria-hidden="true">·</span>
+        <span class="proof-item">96% Hit Bestseller</span>
+        <span class="proof-sep" aria-hidden="true">·</span>
+        <span class="proof-item">Next Cohort Starts Soon</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ PROBLEM ═══ -->
+<section class="problem-section section" aria-labelledby="problem-heading">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="eyebrow">The Challenge Coaches Face</span>
+      <div class="gold-rule"><div class="diamond"></div></div>
+      <h2 id="problem-heading" class="display-bold" style="font-size:clamp(2rem,4vw,3rem);margin-top:0.5rem;">
+        You're the Expert.<br>Where's the Book?
+      </h2>
+    </div>
+    <div class="problem-grid" role="list">
+      <div class="problem-card reveal reveal-delay-1" role="listitem">
+        <div class="problem-icon" aria-hidden="true">◈</div>
+        <h3>You Have the Expertise</h3>
+        <p>Years of transforming clients. A methodology that works. But no book to prove it — and no author authority to command premium prices.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-2" role="listitem">
+        <div class="problem-icon" aria-hidden="true">◈</div>
+        <h3>You Don't Know Where to Start</h3>
+        <p>What do you write? What structure? How do you position it? The blank page is terrifying when you're trying to do it alone.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-3" role="listitem">
+        <div class="problem-icon" aria-hidden="true">◈</div>
+        <h3>You Think It Takes Years</h3>
+        <p>Most coaches believe writing a book is a 12-month project. They're wrong. With the right system, it takes 4 weeks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROGRAM TIMELINE ═══ -->
+<section class="program-section section" id="program" aria-labelledby="program-heading">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="eyebrow">The Breakthrough Method</span>
+      <div class="gold-rule"><div class="diamond"></div></div>
+      <h2 id="program-heading" class="display" style="font-size:clamp(2rem,4vw,3.5rem);color:var(--cream);">
+        Four Weeks. <em style="color:var(--gold-light);">One Bestseller.</em>
+      </h2>
+    </div>
+    <div class="timeline" role="list">
+      <div class="week-card reveal reveal-delay-1" role="listitem">
+        <div class="week-num">
+          <span class="week-label">Week</span>
+          <span class="week-n">1</span>
+        </div>
+        <h3>Clarity & Outline</h3>
+        <p>Define your book's big idea, ideal reader, and chapter architecture. Leave with a complete blueprint.</p>
+      </div>
+      <div class="week-card reveal reveal-delay-2" role="listitem">
+        <div class="week-num">
+          <span class="week-label">Week</span>
+          <span class="week-n">2</span>
+        </div>
+        <h3>Write Your Draft</h3>
+        <p>Daily live writing sessions with accountability. Your full manuscript — done, chapter by chapter.</p>
+      </div>
+      <div class="week-card reveal reveal-delay-3" role="listitem">
+        <div class="week-num">
+          <span class="week-label">Week</span>
+          <span class="week-n">3</span>
+        </div>
+        <h3>Polish & Design</h3>
+        <p>Professional editing, cover design, and KDP formatting. A book you're genuinely proud to publish.</p>
+      </div>
+      <div class="week-card reveal reveal-delay-4" role="listitem">
+        <div class="week-num">
+          <span class="week-label">Week</span>
+          <span class="week-n">4</span>
+        </div>
+        <h3>Launch & Bestseller</h3>
+        <p>Execute a proven Amazon launch strategy. Hit #1 in your category with our community behind you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PULL QUOTE + TESTIMONIALS ═══ -->
+<section class="quote-section" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <blockquote class="pull-quote reveal">
+      "I went from a blank page to <em>#1 Amazon Bestseller</em> in 26 days. This program changed how my clients see me — and how I see myself."
+    </blockquote>
+    <p class="quote-attr reveal"><strong>— Sarah M.</strong>, Executive Life Coach</p>
+
+    <div class="testimonials" id="testimonials-heading" aria-label="Testimonials">
+      <article class="testi-card reveal reveal-delay-1">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p class="testi-text">"I'd been 'going to write a book' for 6 years. In 4 weeks I had a published bestseller. The accountability alone is worth 10x the price."</p>
+        <p class="testi-name">James T.</p>
+        <p class="testi-role">Business Coach, UK</p>
+      </article>
+      <article class="testi-card reveal reveal-delay-2">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p class="testi-text">"My book became my best client acquisition tool. Three $10K clients found me on Amazon within 30 days of publishing. ROI is insane."</p>
+        <p class="testi-name">Priya K.</p>
+        <p class="testi-role">Health & Wellness Coach, UAE</p>
+      </article>
+      <article class="testi-card reveal reveal-delay-3">
+        <div class="stars" aria-label="5 stars">★★★★★</div>
+        <p class="testi-text">"The live sessions made all the difference. I'm not a writer — I'm a coach. But Sai made the whole process feel natural and doable."</p>
+        <p class="testi-name">Marcus D.</p>
+        <p class="testi-role">Leadership Coach, Australia</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRANSFORMATION ═══ -->
+<section class="transform-section section" aria-labelledby="transform-heading">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="eyebrow">The Transformation</span>
+      <div class="gold-rule"><div class="diamond"></div></div>
+      <h2 id="transform-heading" class="display-bold" style="font-size:clamp(2rem,4vw,3rem);">
+        Before &amp; After Breakthrough Author Live
+      </h2>
+    </div>
+    <div class="transform-grid">
+      <div class="transform-col transform-before reveal">
+        <h3><span style="font-size:1.2rem;">&#9711;</span> Before the Challenge</h3>
+        <ul class="transform-list">
+          <li><span class="t-icon">&#8212;</span>Your book idea has been stuck in your head for years</li>
+          <li><span class="t-icon">&#8212;</span>You're invisible in a sea of coaches without a differentiator</li>
+          <li><span class="t-icon">&#8212;</span>Clients find you through word of mouth and cold outreach</li>
+          <li><span class="t-icon">&#8212;</span>You charge less than you're worth because you lack authority</li>
+          <li><span class="t-icon">&#8212;</span>Speaking gigs and media features feel out of reach</li>
+          <li><span class="t-icon">&#8212;</span>You're the best-kept secret in your niche</li>
+        </ul>
+      </div>
+      <div class="transform-arrow reveal">
+        <div class="arrow-circle">&rarr;</div>
+      </div>
+      <div class="transform-col transform-after reveal reveal-delay-2">
+        <h3><span style="font-size:1rem;">&#10038;</span> After the Challenge</h3>
+        <ul class="transform-list">
+          <li><span class="t-icon">&#10038;</span>Your book is published, live on Amazon, and working for you</li>
+          <li><span class="t-icon">&#10038;</span>You're a <strong>bestselling author</strong> &mdash; the ultimate differentiator</li>
+          <li><span class="t-icon">&#10038;</span>Premium clients find <em>you</em> through your book</li>
+          <li><span class="t-icon">&#10038;</span>You command higher fees backed by published authority</li>
+          <li><span class="t-icon">&#10038;</span>Speaking invitations and media features come to you</li>
+          <li><span class="t-icon">&#10038;</span>You're the go-to expert everyone in your niche knows</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT SETS US APART ═══ -->
+<section class="apart-section section" aria-labelledby="apart-heading">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="eyebrow">Why Coaches Choose Us</span>
+      <div class="gold-rule"><div class="diamond"></div></div>
+      <h2 id="apart-heading" class="display" style="font-size:clamp(2rem,4vw,3.5rem);">
+        What Sets This Apart from<br><em style="color:var(--gold);">Everything Else</em>
+      </h2>
+    </div>
+    <div class="apart-grid">
+      <div class="apart-card reveal reveal-delay-1">
+        <div class="apart-num">01</div>
+        <h3>Live, Not Pre-Recorded</h3>
+        <p>Every session is live with real-time coaching, feedback, and accountability. This isn't a course you'll forget about &mdash; it's a challenge you'll finish.</p>
+        <div class="apart-gold-line" aria-hidden="true"></div>
+      </div>
+      <div class="apart-card reveal reveal-delay-2">
+        <div class="apart-num">02</div>
+        <h3>Done-With-You Editing</h3>
+        <p>Our editorial team actively works on your material. They review your book idea, refine your outline, and polish your first chapter. Hands-on, not hands-off.</p>
+        <div class="apart-gold-line" aria-hidden="true"></div>
+      </div>
+      <div class="apart-card reveal reveal-delay-3">
+        <div class="apart-num">03</div>
+        <h3>Built for Coaches Only</h3>
+        <p>This isn't a generic writing program. Every framework, template, and launch strategy is specifically designed for coaches who want to turn a book into clients.</p>
+        <div class="apart-gold-line" aria-hidden="true"></div>
+      </div>
+      <div class="apart-card reveal">
+        <div class="apart-num">04</div>
+        <h3>Bestseller Launch System</h3>
+        <p>We don't just help you write &mdash; we give you the exact Amazon launch strategy that has produced 108 bestsellers across dozens of coaching niches.</p>
+        <div class="apart-gold-line" aria-hidden="true"></div>
+      </div>
+      <div class="apart-card reveal reveal-delay-1">
+        <div class="apart-num">05</div>
+        <h3>Community That Lasts</h3>
+        <p>The Breakthrough Author Mastermind stays open after the 4 weeks. Questions six months from now? We're still there. You're never doing this alone.</p>
+        <div class="apart-gold-line" aria-hidden="true"></div>
+      </div>
+      <div class="apart-card reveal reveal-delay-2">
+        <div class="apart-num">06</div>
+        <h3>$47 &mdash; Not $5,000</h3>
+        <p>Programs like this typically cost thousands. We offer it at $47 because we want to find the next great coach with a book the world needs to read.</p>
+        <div class="apart-gold-line" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOST ═══ -->
+<section class="host-section section" aria-labelledby="host-heading">
+  <div class="container">
+    <div class="host-inner">
+      <div class="host-photo-wrap reveal">
+        <div class="host-photo-ring" aria-hidden="true"></div>
+        <div class="host-photo-ring2" aria-hidden="true"></div>
+        <img src="assets/images/mehak.jpeg" alt="Mehak Bhatia" class="host-photo">
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="host-tag">Your Host</div>
+        <h2 id="host-heading">Meet <em>Mehak,</em><br>Your Bestseller Coach</h2>
+        <p class="host-bio">
+          Mehak Bhatia is a writing coach, bestseller strategist, and the founder of Breakthrough Author Live. She has spent years helping coaches, consultants, and experts turn their expertise into published bestsellers that attract premium clients and establish unshakable authority.
+        </p>
+        <p class="host-bio">
+          She built Breakthrough Author Live because she kept watching brilliant coaches hold back their expertise — waiting for the "right time" to write. The right time is now, and four weeks is all you need.
+        </p>
+        <div class="host-stats">
+          <div>
+            <div class="stat-num">500+</div>
+            <div class="stat-label">Coaches Guided</div>
+          </div>
+          <div>
+            <div class="stat-num">108</div>
+            <div class="stat-label">Bestsellers</div>
+          </div>
+          <div>
+            <div class="stat-num">96%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+        </div>
+        <a href="about.html" class="btn btn-outline">Read Full Story →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA / PRICING ═══ -->
+<section class="cta-section" id="cta" aria-labelledby="cta-heading">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="eyebrow reveal">Join the Challenge</span>
+      <h2 id="cta-heading" class="display reveal" style="font-size:clamp(2rem,5vw,4rem);color:var(--cream);margin-top:0.5rem;">
+        Your Bestseller Awaits
+      </h2>
+
+      <div class="price-display reveal">
+        <span class="price-dollar">$</span>
+        <span class="price-num">47</span>
+        <span class="price-period">one-time</span>
+      </div>
+
+      <span class="count-label reveal">Next cohort begins in:</span>
+      <div class="countdown reveal" aria-live="polite" aria-label="Countdown timer">
+        <div class="count-block">
+          <span class="count-num" id="days">00</span>
+          <span class="count-unit">Days</span>
+        </div>
+        <span class="count-sep" aria-hidden="true">:</span>
+        <div class="count-block">
+          <span class="count-num" id="hours">00</span>
+          <span class="count-unit">Hours</span>
+        </div>
+        <span class="count-sep" aria-hidden="true">:</span>
+        <div class="count-block">
+          <span class="count-num" id="minutes">00</span>
+          <span class="count-unit">Mins</span>
+        </div>
+        <span class="count-sep" aria-hidden="true">:</span>
+        <div class="count-block">
+          <span class="count-num" id="seconds">00</span>
+          <span class="count-unit">Secs</span>
+        </div>
+      </div>
+
+      <ul class="includes reveal" aria-label="What's included">
+        <li class="include-item"><span class="include-check" aria-hidden="true">✦</span>4 weeks of live group sessions with Sai</li>
+        <li class="include-item"><span class="include-check" aria-hidden="true">✦</span>Complete book outline framework & templates</li>
+        <li class="include-item"><span class="include-check" aria-hidden="true">✦</span>Professional cover design + KDP formatting</li>
+        <li class="include-item"><span class="include-check" aria-hidden="true">✦</span>Proven Amazon bestseller launch strategy</li>
+        <li class="include-item"><span class="include-check" aria-hidden="true">✦</span>Private community & accountability partners</li>
+        <li class="include-item"><span class="include-check" aria-hidden="true">✦</span>Lifetime access to all recordings</li>
+      </ul>
+
+      <div class="cta-btn-wrap reveal">
+        <a href="#" class="btn btn-gold" style="font-size:0.85rem;padding:1.25rem 3.5rem;">
+          Claim Your Spot — $47
+        </a>
+      </div>
+      <p class="cta-trust reveal">🔒 Secure Checkout · 30-Day Money-Back Guarantee · Instant Access</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STILL ON THE FENCE ═══ -->
+<section class="objection-section section" aria-labelledby="objection-heading">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="eyebrow">Still Thinking It Over?</span>
+      <div class="gold-rule"><div class="diamond"></div></div>
+      <h2 id="objection-heading" class="display-bold" style="font-size:clamp(2rem,4vw,3rem);">
+        Let's Address What's on Your Mind
+      </h2>
+    </div>
+    <div class="objection-grid">
+
+      <div class="objection-card reveal">
+        <div class="objection-doubt">
+          <span class="doubt-q">&ldquo;</span>
+          I'm not a writer &mdash; I wouldn't even know what to say.
+        </div>
+        <p class="objection-answer">You don't need to be a writer. You're a coach with years of experience transforming lives. <strong>We extract what's already in your head</strong> and help you structure it into a book that reads beautifully. Our editors do the heavy lifting on polish &mdash; your job is to show up with your expertise.</p>
+        <span class="objection-highlight">96% of our graduates had never written a book before</span>
+      </div>
+
+      <div class="objection-card reveal reveal-delay-1">
+        <div class="objection-doubt">
+          <span class="doubt-q">&ldquo;</span>
+          I don't have time &mdash; my schedule is already packed.
+        </div>
+        <p class="objection-answer">The live sessions are 60&ndash;90 minutes each, and <strong>every session is recorded</strong>. Many of our coaches run full practices, have families, and still complete the challenge. The structure is designed to work around your life, not the other way around.</p>
+        <span class="objection-highlight">Built for busy coaches with full schedules</span>
+      </div>
+
+      <div class="objection-card reveal">
+        <div class="objection-doubt">
+          <span class="doubt-q">&ldquo;</span>
+          What if I write the book and nobody reads it?
+        </div>
+        <p class="objection-answer">That's exactly why Week 4 exists. We don't just help you write &mdash; we give you a <strong>proven Amazon launch strategy</strong> that has produced 108 bestsellers. You'll know exactly which categories to target, how to rally your network, and how to hit #1. This isn't publish-and-pray.</p>
+        <span class="objection-highlight">108 bestsellers and counting</span>
+      </div>
+
+      <div class="objection-card reveal reveal-delay-1">
+        <div class="objection-doubt">
+          <span class="doubt-q">&ldquo;</span>
+          $47 feels too cheap &mdash; is this actually good?
+        </div>
+        <p class="objection-answer">The program is worth $950 &mdash; that's what previous cohorts paid. We price it at $47 because <strong>this is how we find great coaches</strong>. We want to work with you, see your book idea, and if it makes sense, partner on the full journey. Either way, you keep everything.</p>
+        <span class="objection-highlight">30-day money-back guarantee &mdash; zero risk</span>
+      </div>
+
+      <div class="objection-card reveal">
+        <div class="objection-doubt">
+          <span class="doubt-q">&ldquo;</span>
+          Will this work for my specific coaching niche?
+        </div>
+        <p class="objection-answer">We've published bestsellers across <strong>health, wellness, business, finance, relationships, executive coaching, personal development</strong>, and dozens more. The framework adapts to your subject matter. If you coach people and want a book, this works for you.</p>
+        <span class="objection-highlight">Bestsellers in 40+ Amazon categories</span>
+      </div>
+
+      <div class="objection-card reveal reveal-delay-1">
+        <div class="objection-doubt">
+          <span class="doubt-q">&ldquo;</span>
+          What if I already started writing and got stuck?
+        </div>
+        <p class="objection-answer">Even better. Bring what you have. <strong>Our editors will review and refine it</strong>, restructure where needed, and build your launch strategy around it. You're not starting over &mdash; you're getting unstuck with a team behind you.</p>
+        <span class="objection-highlight">Many graduates arrive with half-finished manuscripts</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section section" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="eyebrow">Common Questions</span>
+      <div class="gold-rule"><div class="diamond"></div></div>
+      <h2 id="faq-heading" class="display-bold" style="font-size:clamp(1.8rem,3.5vw,2.8rem);">Everything You Need to Know</h2>
+    </div>
+    <div class="faq-grid">
+      <details class="reveal">
+        <summary>Do I need writing experience? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-body">Absolutely not. Most of our 4,200+ graduates are coaches, not writers. The program is specifically designed to help you extract your expertise and put it on the page in a way that feels natural — not forced.</p>
+      </details>
+      <details class="reveal">
+        <summary>What if I'm too busy? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-body">The challenge is designed for working coaches. Live sessions are 60–90 minutes, held at times that work across time zones. All sessions are recorded, so if you miss one, you can catch up within 24 hours.</p>
+      </details>
+      <details class="reveal">
+        <summary>What genre or niche does this work for? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-body">Any coaching niche — business, life, health, executive, relationships, finance, and more. The framework adapts to your subject matter. We've had bestsellers in over 40 different Amazon categories.</p>
+      </details>
+      <details class="reveal">
+        <summary>Is there a refund policy? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-body">Yes. We offer a 30-day money-back guarantee. If you show up, do the work, and don't feel you received value, contact us within 30 days for a full refund — no questions asked.</p>
+      </details>
+      <details class="reveal">
+        <summary>Will I actually hit bestseller? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-body">96% of graduates who complete the full program and follow the launch strategy hit #1 bestseller status in at least one Amazon category. We walk you through every step of the launch — nothing is left to chance.</p>
+      </details>
+      <details class="reveal">
+        <summary>What happens after the challenge? <span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-body">You'll have a published, bestselling book and a proven system for using it to attract high-ticket clients. Many graduates go on to work with our team on broader marketing and client acquisition through Coach Foundation.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo">Breakthrough Author Live<span>From Idea to Bestseller in 4 Weeks</span></div>
+        <p class="footer-tagline">Turn your expertise into authority.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="#program" class="footer-link">Program</a>
+        <a href="#cta" class="footer-link">Join</a>
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Coach Foundation / Books Legacy. All rights reserved.</p>
+      <p class="footer-copy">Built by Mehak Bhatia with Claude Code</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══ THEME TOGGLE ═══ */
+const toggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
+
+function setTheme(theme) {
+  html.setAttribute('data-theme', theme);
+  toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+  toggle.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+  try { localStorage.setItem('bal-theme', theme); } catch(e) {}
+}
+
+const saved = (() => { try { return localStorage.getItem('bal-theme'); } catch(e) { return null; } })();
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+setTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+toggle.addEventListener('click', () => {
+  const current = html.getAttribute('data-theme');
+  setTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+/* ═══ NAV SCROLL ═══ */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ═══ SCROLL REVEAL ═══ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ═══ COUNTDOWN TIMER ═══ */
+function getTargetDate() {
+  const d = new Date();
+  d.setDate(d.getDate() + 14);
+  d.setHours(9, 0, 0, 0);
+  return d;
+}
+const target = getTargetDate();
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('days').textContent = '00';
+    document.getElementById('hours').textContent = '00';
+    document.getElementById('minutes').textContent = '00';
+    document.getElementById('seconds').textContent = '00';
+    return;
+  }
+  document.getElementById('days').textContent    = pad(Math.floor(diff / 86400000));
+  document.getElementById('hours').textContent   = pad(Math.floor((diff % 86400000) / 3600000));
+  document.getElementById('minutes').textContent = pad(Math.floor((diff % 3600000) / 60000));
+  document.getElementById('seconds').textContent = pad(Math.floor((diff % 60000) / 1000));
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* ═══ SMOOTH ANCHOR ═══ */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>

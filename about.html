@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Mehak — Breakthrough Author Live</title>
+<meta name="description" content="Meet Mehak Bhatia — writing coach, bestseller strategist, and the founder of Breakthrough Author Live.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0D1B2A;--navy-mid:#152336;--navy-light:#1E3251;
+  --cream:#F7F2E8;--cream-warm:#EDE5D0;--cream-deep:#E4D9C0;
+  --gold:#C9A84C;--gold-light:#E2C97E;--gold-pale:#F0E0A8;--gold-dark:#9E7B2F;
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:'Jost',sans-serif;
+  --bg:var(--cream);--bg-alt:var(--cream-warm);--bg-dark:var(--navy);
+  --text:var(--navy);--text-muted:#5A6478;--text-inv:var(--cream);
+  --surface:#FFFFFF;--border:rgba(201,168,76,0.3);
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+[data-theme="dark"] {
+  --bg:var(--navy);--bg-alt:var(--navy-mid);--bg-dark:#070F1A;
+  --text:var(--cream);--text-muted:rgba(247,242,232,0.6);
+  --surface:var(--navy-light);--border:rgba(201,168,76,0.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);font-weight:300;background:var(--bg);color:var(--text);line-height:1.75;transition:background 0.4s var(--ease),color 0.4s var(--ease);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.container{max-width:1180px;margin:0 auto;padding:0 2rem}
+.eyebrow{font-family:var(--font-body);font-weight:500;font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold)}
+.gold{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--font-body);font-weight:500;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;padding:1rem 2.5rem;border:none;cursor:pointer;position:relative;overflow:hidden;transition:transform 0.3s var(--ease),box-shadow 0.3s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);transition:left 0.6s var(--ease)}
+.btn-gold:hover::after{left:140%}
+.btn-gold:hover{box-shadow:0 8px 32px rgba(201,168,76,0.4)}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.btn-outline:hover{background:rgba(201,168,76,0.08)}
+.gold-rule{display:flex;align-items:center;gap:1rem;justify-content:center;margin:1.5rem 0}
+.gold-rule::before,.gold-rule::after{content:'';width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.gold-rule .diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.5rem 0;transition:background 0.4s var(--ease),padding 0.3s var(--ease),box-shadow 0.3s}
+.nav.scrolled{background:var(--bg);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--border);padding:1rem 0}
+[data-theme="dark"] .nav.scrolled{background:rgba(13,27,42,0.95)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-display);font-weight:600;font-size:1.05rem;letter-spacing:0.08em;color:var(--gold);text-transform:uppercase;line-height:1.2}
+.nav-logo span{display:block;font-size:0.55rem;letter-spacing:0.3em;color:var(--text-muted);font-family:var(--font-body);font-weight:400;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:2.5rem}
+.nav-link{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:400;color:var(--text-muted);transition:color 0.2s}
+.nav-link:hover{color:var(--gold)}
+.theme-toggle{background:none;border:1px solid var(--border);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.9rem;transition:border-color 0.2s,transform 0.3s var(--ease);color:var(--text)}
+.theme-toggle:hover{border-color:var(--gold);transform:rotate(20deg)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s var(--ease),transform 0.8s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.about-hero{min-height:60vh;background:var(--navy);display:flex;align-items:flex-end;padding:9rem 0 5rem;position:relative;overflow:hidden}
+[data-theme="dark"] .about-hero{background:#070F1A}
+.about-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 70% 50%,rgba(201,168,76,0.06) 0%,transparent 60%),linear-gradient(180deg,#070F1A 0%,#0D1B2A 100%)}
+.about-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:auto 1fr;gap:5rem;align-items:flex-end}
+.about-photo-wrap{position:relative;width:280px;flex-shrink:0}
+.about-photo{width:280px;height:360px;object-fit:cover;border:2px solid rgba(201,168,76,0.3)}
+.about-hero-text{padding-bottom:0.5rem}
+.about-hero-text .eyebrow{margin-bottom:1rem;display:block}
+.about-hero h1{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;font-style:italic;color:var(--cream);line-height:1.05;margin-bottom:1.5rem}
+.about-hero h1 em{color:var(--gold-light)}
+.about-hero-sub{font-size:1.05rem;color:rgba(247,242,232,0.6);max-width:520px;line-height:1.8}
+.bio-section{padding:6rem 0;background:var(--bg)}
+.bio-grid{display:grid;grid-template-columns:1fr 320px;gap:6rem;align-items:start}
+.bio-block{margin-bottom:2.5rem}
+.bio-block h2{font-family:var(--font-display);font-size:2rem;font-weight:600;margin-bottom:1rem;color:var(--text)}
+.bio-block p{font-size:1rem;color:var(--text-muted);line-height:1.9;margin-bottom:1.2rem}
+.sidebar-card{border:1px solid var(--border);padding:2rem;margin-bottom:1.5rem;background:var(--surface)}
+[data-theme="dark"] .sidebar-card{background:var(--navy-light)}
+.sidebar-card h3{font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin-bottom:1rem;color:var(--gold)}
+.sidebar-stat{margin-bottom:1rem}
+.sidebar-stat-num{font-family:var(--font-display);font-size:2.2rem;font-weight:600;color:var(--text);line-height:1}
+.sidebar-stat-label{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-top:0.2rem}
+.credential-list li{display:flex;align-items:flex-start;gap:0.6rem;font-size:0.88rem;color:var(--text-muted);padding:0.5rem 0;border-bottom:1px solid var(--border);line-height:1.5}
+.credential-list li:last-child{border-bottom:none}
+.cred-dot{color:var(--gold);flex-shrink:0;margin-top:0.15rem}
+.about-cta{background:var(--navy);padding:6rem 0;text-align:center}
+[data-theme="dark"] .about-cta{background:#070F1A}
+.about-cta h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;font-style:italic;color:var(--cream);margin:1rem 0 2rem}
+.about-cta h2 em{color:var(--gold-light)}
+.footer{background:var(--navy);padding:3rem 0 2rem;border-top:1px solid rgba(201,168,76,0.1)}
+[data-theme="dark"] .footer{background:#050C15}
+.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;gap:2rem;flex-wrap:wrap}
+.footer-brand .nav-logo{margin-bottom:0.5rem}
+.footer-tagline{font-size:0.82rem;color:rgba(247,242,232,0.35);letter-spacing:0.05em;margin-top:0.5rem}
+.footer-links{display:flex;gap:2rem;flex-wrap:wrap}
+.footer-link{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(247,242,232,0.4);transition:color 0.2s}
+.footer-link:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(201,168,76,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:0.72rem;color:rgba(247,242,232,0.25);letter-spacing:0.05em}
+@media(max-width:900px){
+  .about-hero-inner{grid-template-columns:1fr;gap:3rem;align-items:flex-start}
+  .about-photo-wrap{width:200px}
+  .about-photo{width:200px;height:260px}
+  .bio-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .nav-links{gap:1rem}
+  .nav-link{display:none}
+  .nav-link.mobile-show{display:inline}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      Breakthrough Author Live
+      <span>From Idea to Bestseller in 4 Weeks</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="index.html#program" class="nav-link">Program</a>
+      <a href="index.html#cta" class="btn btn-outline" style="padding:0.6rem 1.4rem;font-size:0.7rem;">Join — $47</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode"></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ABOUT HERO -->
+<section class="about-hero">
+  <div class="about-hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="about-hero-inner">
+      <div class="about-photo-wrap reveal">
+        <img src="assets/images/mehak.jpeg" alt="Mehak Bhatia" class="about-photo">
+      </div>
+      <div class="about-hero-text reveal reveal-delay-2">
+        <span class="eyebrow">Your Writing Coach</span>
+        <h1>Hi, I'm<br><em>Mehak Bhatia</em></h1>
+        <p class="about-hero-sub">Writing coach, bestseller strategist, and the founder of Breakthrough Author Live. I help coaches turn their expertise into published bestsellers that attract premium clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIO CONTENT -->
+<section class="bio-section">
+  <div class="container">
+    <div class="bio-grid">
+      <div>
+        <div class="bio-block reveal">
+          <h2>Who I Am</h2>
+          <p>I'm a writing coach and bestseller strategist who specializes in helping coaches, consultants, and experts get their books out into the world. I believe every coach has a book inside them &mdash; one that can transform their business, elevate their authority, and change the lives of the people they serve.</p>
+          <p>Over the years, I've guided hundreds of coaches through the journey from blank page to published bestseller. I've seen firsthand how a single book can open doors to speaking engagements, media features, premium clients, and a level of credibility that no amount of social media posts can match.</p>
+        </div>
+
+        <div class="bio-block reveal">
+          <h2>Why I Created Breakthrough Author Live</h2>
+          <p>I kept meeting brilliant coaches who had been &ldquo;thinking about writing a book&rdquo; for years &mdash; sometimes decades. They had the expertise. They had the stories. They had the methodology. But they didn't have a system to get it done.</p>
+          <p>So I built one. Breakthrough Author Live is a 4-week live challenge that takes coaches from idea to bestseller-ready manuscript, complete with a proven Amazon launch strategy. No fluff. No endless courses you never finish. Just four focused weeks of live coaching, expert editing, and a community that holds you accountable.</p>
+          <p>The result? Coaches who finally stop thinking about their book and start <em style="color:var(--gold);">holding it.</em></p>
+        </div>
+
+        <div class="bio-block reveal">
+          <h2>My Philosophy</h2>
+          <p>A book is the single highest-leverage asset a coach can create. It works for you while you sleep, positions you as the undisputed expert in your niche, and attracts clients who are already sold on your approach before they ever speak to you.</p>
+          <p>But most coaches get it wrong. They write a book that reads like a brain dump instead of a client-attraction machine. They publish it and hope for the best instead of executing a real launch strategy. And they settle for &ldquo;author&rdquo; when they could have &ldquo;bestselling author.&rdquo;</p>
+          <p>I'm here to make sure you get all three right &mdash; the book, the launch, and the bestseller status. In four weeks.</p>
+        </div>
+
+        <div class="reveal" style="margin-top:3rem;">
+          <a href="index.html#cta" class="btn btn-gold">Join Breakthrough Author Live &rarr;</a>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div>
+        <div class="sidebar-card reveal">
+          <h3>By the Numbers</h3>
+          <div class="sidebar-stat">
+            <div class="sidebar-stat-num">500+</div>
+            <div class="sidebar-stat-label">Coaches Guided</div>
+          </div>
+          <div class="sidebar-stat">
+            <div class="sidebar-stat-num">108</div>
+            <div class="sidebar-stat-label">Bestsellers Published</div>
+          </div>
+          <div class="sidebar-stat">
+            <div class="sidebar-stat-num">11</div>
+            <div class="sidebar-stat-label">Cohorts Completed</div>
+          </div>
+          <div class="sidebar-stat">
+            <div class="sidebar-stat-num">96%</div>
+            <div class="sidebar-stat-label">Bestseller Success Rate</div>
+          </div>
+        </div>
+
+        <div class="sidebar-card reveal reveal-delay-1">
+          <h3>Areas of Expertise</h3>
+          <ul class="credential-list">
+            <li><span class="cred-dot" aria-hidden="true">&#10038;</span>Bestseller Book Strategy &amp; Positioning</li>
+            <li><span class="cred-dot" aria-hidden="true">&#10038;</span>Manuscript Development &amp; Editing</li>
+            <li><span class="cred-dot" aria-hidden="true">&#10038;</span>Amazon #1 Launch Strategy</li>
+            <li><span class="cred-dot" aria-hidden="true">&#10038;</span>Author Platform Building</li>
+            <li><span class="cred-dot" aria-hidden="true">&#10038;</span>Book-to-Client Conversion Systems</li>
+            <li><span class="cred-dot" aria-hidden="true">&#10038;</span>Coaching Business Growth</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card reveal reveal-delay-2">
+          <h3>As Featured In</h3>
+          <ul class="credential-list">
+            <li><span class="cred-dot" aria-hidden="true">&#10038;</span>Forbes</li>
+            <li><span class="cred-dot" aria-hidden="true">&#10038;</span>Inc Magazine</li>
+            <li><span class="cred-dot" aria-hidden="true">&#10038;</span>Entrepreneur</li>
+            <li><span class="cred-dot" aria-hidden="true">&#10038;</span>Trustpilot (Hundreds of Reviews)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta">
+  <div class="container">
+    <span class="eyebrow reveal" style="display:block;">Ready to Write Your Book?</span>
+    <div class="gold-rule reveal"><div class="diamond"></div></div>
+    <h2 class="reveal">Your Expertise Deserves<br>to Be <em>Published</em></h2>
+    <div class="reveal">
+      <a href="index.html#cta" class="btn btn-gold" style="font-size:0.82rem;padding:1.2rem 3rem;">
+        Join Breakthrough Author Live &mdash; $47
+      </a>
+    </div>
+    <p class="reveal" style="margin-top:1.5rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(247,242,232,0.3);">30-Day Guarantee &middot; Secure Checkout &middot; Instant Access</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo">Breakthrough Author Live<span>From Idea to Bestseller in 4 Weeks</span></div>
+        <p class="footer-tagline">Turn your expertise into authority.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="index.html#program" class="footer-link">Program</a>
+        <a href="index.html#cta" class="footer-link">Join</a>
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Breakthrough Author Live. All rights reserved.</p>
+      <p class="footer-copy">Coach Foundation &middot; Books Legacy</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
+function setTheme(theme) {
+  html.setAttribute('data-theme', theme);
+  toggle.textContent = theme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  toggle.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+  try { localStorage.setItem('bal-theme', theme); } catch(e) {}
+}
+const saved = (() => { try { return localStorage.getItem('bal-theme'); } catch(e) { return null; } })();
+setTheme(saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+toggle.addEventListener('click', () => setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
