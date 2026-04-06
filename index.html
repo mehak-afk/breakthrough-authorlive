@@ -236,6 +236,61 @@ ul { list-style: none; }
 }
 .theme-toggle:hover { border-color: var(--gold); transform: rotate(20deg); }
 
+/* Focus Styles */
+.btn:focus-visible, .nav-link:focus-visible, .theme-toggle:focus-visible, summary:focus-visible, a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--text);
+  transition: transform 0.3s var(--ease), opacity 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+.mobile-overlay.open { display: flex; opacity: 1; }
+.mobile-overlay a {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text);
+  transition: color 0.2s;
+}
+.mobile-overlay a:hover { color: var(--gold); }
+
 /* ═══════════════════════════════════════════
    HERO
 ═══════════════════════════════════════════ */
@@ -955,7 +1010,7 @@ details[open] .faq-icon { transform: rotate(45deg); border-color: var(--gold); }
 /* ═══════════════════════════════════════════
    OBJECTION HANDLING
 ═══════════════════════════════════════════ */
-.objection-section { background: var(--bg-alt); }
+.objection-section { background: var(--bg); }
 .objection-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1055,9 +1110,8 @@ details[open] .faq-icon { transform: rotate(45deg); border-color: var(--gold); }
 }
 
 @media (max-width: 600px) {
-  .nav-links { gap: 1rem; }
-  .nav-link { display: none; }
-  .nav-link.mobile-show { display: inline; }
+  .nav-links .nav-link { display: none; }
+  .hamburger { display: flex; }
 
   .timeline { grid-template-columns: 1fr; }
 
@@ -1087,9 +1141,19 @@ details[open] .faq-icon { transform: rotate(45deg); border-color: var(--gold); }
       <a href="about.html" class="nav-link mobile-show">About</a>
       <a href="#cta" class="btn btn-outline" style="padding:0.6rem 1.4rem;font-size:0.7rem;">Join — $47</a>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
+
+<!-- Mobile Overlay -->
+<div class="mobile-overlay" id="mobile-overlay">
+  <a href="#program" class="mobile-nav-link">Program</a>
+  <a href="about.html" class="mobile-nav-link">About</a>
+  <a href="#cta" class="mobile-nav-link">Join — $47</a>
+</div>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" aria-labelledby="hero-headline">
@@ -1119,7 +1183,7 @@ details[open] .faq-icon { transform: rotate(45deg); border-color: var(--gold); }
         </a>
       </div>
       <div class="hero-proof">
-        <span class="proof-item">4,200+ Coaches Enrolled</span>
+        <span class="proof-item">500+ Coaches Enrolled</span>
         <span class="proof-sep" aria-hidden="true">·</span>
         <span class="proof-item">96% Hit Bestseller</span>
         <span class="proof-sep" aria-hidden="true">·</span>
@@ -1232,7 +1296,7 @@ details[open] .faq-icon { transform: rotate(45deg); border-color: var(--gold); }
       </article>
       <article class="testi-card reveal reveal-delay-3">
         <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p class="testi-text">"The live sessions made all the difference. I'm not a writer — I'm a coach. But Sai made the whole process feel natural and doable."</p>
+        <p class="testi-text">"The live sessions made all the difference. I'm not a writer — I'm a coach. But Mehak made the whole process feel natural and doable."</p>
         <p class="testi-name">Marcus D.</p>
         <p class="testi-role">Leadership Coach, Australia</p>
       </article>
@@ -1408,7 +1472,7 @@ details[open] .faq-icon { transform: rotate(45deg); border-color: var(--gold); }
       </div>
 
       <ul class="includes reveal" aria-label="What's included">
-        <li class="include-item"><span class="include-check" aria-hidden="true">✦</span>4 weeks of live group sessions with Sai</li>
+        <li class="include-item"><span class="include-check" aria-hidden="true">✦</span>4 weeks of live group sessions with Mehak</li>
         <li class="include-item"><span class="include-check" aria-hidden="true">✦</span>Complete book outline framework & templates</li>
         <li class="include-item"><span class="include-check" aria-hidden="true">✦</span>Professional cover design + KDP formatting</li>
         <li class="include-item"><span class="include-check" aria-hidden="true">✦</span>Proven Amazon bestseller launch strategy</li>
@@ -1626,6 +1690,22 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  });
+});
+
+/* ═══ HAMBURGER MENU ═══ */
+const hamburger = document.getElementById('hamburger');
+const overlay = document.getElementById('mobile-overlay');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+});
+overlay.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
   });
 });
 </script>
